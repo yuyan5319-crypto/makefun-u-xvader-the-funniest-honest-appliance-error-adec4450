@@ -12,7 +12,7 @@ pun bolted on. The machine speaks in its own flat, put-upon voice: it is
 genuinely proud of its one cube, and its only advice is for the owner to
 lower their expectations. No padding, no explaining of the joke.
 
-It also fits the bounty gate exactly: one line, 118 characters, plain ASCII,
+It also fits the bounty gate exactly: one line, 108 characters, plain ASCII,
 no trailing newline. The program enforces that gate in code (`gate()` in
 `main.py`), so the line you read is the line the grader gets.
 

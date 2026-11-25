@@ -30,6 +30,10 @@ def gate(line):
         raise ValueError("line must be a single line")
     if any(ord(c) < 32 or ord(c) == 127 for c in line):
         raise ValueError("line must not contain control characters")
+    if len(line.encode("utf-8")) > MAX_CHARS:
+        raise ValueError("line must be at most %d bytes" % MAX_CHARS)
+    if not line.isascii():
+        raise ValueError("line must be plain ASCII")
     return line
 
 
@@ -40,6 +44,9 @@ def main():
     path = os.path.join(out_dir, "entry.txt")
     with open(path, "w", encoding="utf-8") as f:
         f.write(line)
+    with open(path, "r", encoding="utf-8") as f:
+        if f.read() != line:
+            raise RuntimeError("entry.txt does not hold the line we wrote")
     print(line)
     return 0
 
